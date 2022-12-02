@@ -2,13 +2,14 @@
 
 body {
     text-align: center;
+    margin: 3rem;
 }
 
 #wrapper {
-    height: 432px;
-    width: 432px;
-    border: solid 10px black;
-    margin: 0 auto;
+    height: 416px;
+    width: 416px;
+    /* border: solid 10px black; */
+    margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -18,7 +19,7 @@ body {
     width: 100px;
     background-image: url(fireballmario.jpg);
     font-family: sans-serif;
-    border: solid 4px black;
+    border: solid 2px black;
 }
 
 #tile1 {
