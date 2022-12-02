@@ -2,23 +2,27 @@
 
 body {
     text-align: center;
+    margin: 3rem;
 }
 
 #wrapper {
     height: 432px;
     width: 432px;
-    border: solid 10px black;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+    /* border: solid 10px black; */
+    margin: 1rem auto;
+    position: relative;
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 
 .tile {
-    height: 100px;
-    width: 100px;
+    height: 96px;
+    width: 96px;
+    font-size: 32px;
     background-image: url(fireballmario.jpg);
     font-family: sans-serif;
-    border: solid 4px black;
+    border: solid 2px black;
+    position: absolute;
 }
 
 #tile1 {
@@ -26,43 +30,71 @@ body {
 }
 #tile2 {
     background-position: -100px 0px;
+    top: 0;
+    left: 100px;
 }
 #tile3 {
     background-position: -200px 0px;
+    top: 0;
+    left: 200px;
 }
 #tile4 {
     background-position: -300px 0px;
+    top: 0;
+    left: 300px;
 }
 #tile5 {
     background-position: 0px -100px;
+    top: 100px;
+    left: 0;
 }
 #tile6 {
     background-position: -100px -100px;
+    top: 100px;
+    left: 100px;
 }
 #tile7 {
     background-position: -200px -100px;
+    top: 100px;
+    left: 200px;
 }
 #tile8 {
     background-position: -300px -100px;
+    top: 100px;
+    left: 300px;
 }
 #tile9 {
     background-position: 0px -200px;
+    top: 200px;
+    left: 0;
 }
 #tile10 {
     background-position: -100px -200px;
+    top: 200px;
+    left: 100px;
 }
 #tile11 {
     background-position: -200px -200px;
+    top: 200px;
+    left: 200px;
 }
 #tile12 {
     background-position: -300px -200px;
+    top: 200px;
+    left: 300px;
 }
 #tile13 {
     background-position: 0px -300px;
+    top: 300px;
+    left: 0;
 }
 #tile14 {
     background-position: -100px -300px;
+    top: 300px;
+    left: 100px;
 }
 #tile15 {
     background-position: -200px -300px;
+    top: 300px;
+    left: 200px;
 }
