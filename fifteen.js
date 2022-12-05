@@ -1,4 +1,4 @@
-// Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
+// Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
 
 // index is the tile, value is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
@@ -38,7 +38,7 @@ function findMoveablePieces(){
     var clear = document.querySelectorAll(".moveablepiece");
     for(var i = 0; i < clear.length; i++){ //removes moveablepiece from all tiles that have it
         var tile = clear[i];
-        tile.classList.remove(".moveablepiece");
+        tile.classList.remove("moveablepiece");
     }
 
     var emptyTile = tilePlacement[15];
@@ -110,6 +110,7 @@ function moveTile(){
                 console.log("left");
             }
         }
+        checkWin();
         findMoveablePieces();
     }
 }
@@ -156,4 +157,15 @@ function moveLeft(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+}
+
+function checkWin(){
+
+    for(var i = 0; i < 16; i++){
+        if(tilePlacement[i] != i){ //if a tile is not in the correct position, return
+            return;
+        }
+    }
+    //if all tile placements correct, show win notif
+    setTimeout(() => {  alert("Win!"); }, 100); //placeholder win notif, timeout so tile location has time to update
 }
