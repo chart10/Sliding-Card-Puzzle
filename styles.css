@@ -114,8 +114,9 @@ body {
     left: 200px;
 }
 
-.tile.moveablepiece:hover{
+.tile.moveablePiece:hover{
     border-color: red;
     color: #006600;
     text-decoration-line: underline;
+    cursor: pointer;
 }

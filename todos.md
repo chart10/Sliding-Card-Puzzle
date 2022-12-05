@@ -10,12 +10,6 @@ TODO: Add and style background image for the whole page
 
 TODO: Design Slide animation for tiles
 
-TODO: Design the Shuffle function:
-Perform the slide function randomly 500 times (or more?)
-Activate function with Shuffle Button in HTML
-Begin timer
-Make Shuffle look cool?
-
 TODO: Design CheckForWin function:
 After each Slide, check if the tiles are in the right place
 loop through tilePlacement Array
@@ -23,5 +17,16 @@ If !(Index + 1 == Value) { break }
 Display a congratulations message
 
 TODO: Design Timer function
+Begin Timer with Shuffle function
 
 TODO: Design Reset function
+
+TODO: Simplify 4 move functions into 1 function
+
+COMPLETED!!! Paste finished items down here
+
+TODO: Design the Shuffle function:
+Perform the slide function randomly 500 times (or more?)
+Activate function with Shuffle Button in HTML
+Begin timer
+Make Shuffle look cool?
