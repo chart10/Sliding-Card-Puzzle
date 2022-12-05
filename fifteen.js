@@ -129,6 +129,28 @@ function moveTile(){
     }
 }
 
+function moveTile(tile, id, direction, currentPosition){
+    var newPosition = parseInt(currentPosition);
+    if(direction == "left" || direction == "up"){
+        position = position - 100;
+    }
+    else{
+        position = position + 100;
+    }
+
+    if(direction == "up" || direction == "down"){
+        tile.style.top = position + "px";
+    }
+    else{
+        tile.style.left = position + "px";
+    }
+
+    // Update tilePlacement Array
+    var swap = tilePlacement[id-1]; 
+    tilePlacement[id-1] = tilePlacement[15];
+    tilePlacement[15] = swap;
+}
+
 
 // TODO: Lots of duplicate lines. Try to combine these 4 functions into 1
 function moveUp(tile, id, currentPosition){
