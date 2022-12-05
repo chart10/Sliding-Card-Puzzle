@@ -1,4 +1,4 @@
-// Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
+// Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
 
 // index is the tile, value is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
