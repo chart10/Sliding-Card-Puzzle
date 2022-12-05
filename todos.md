@@ -21,6 +21,8 @@ Begin Timer with Shuffle function
 
 TODO: Design Reset function
 
+TODO: Simplify 4 move functions into 1 function
+
 COMPLETED!!! Paste finished items down here
 
 TODO: Design the Shuffle function:
