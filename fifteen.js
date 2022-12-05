@@ -8,7 +8,7 @@ const movement = [
     [0, 1, 1, 0], //position 0: down, right
     [0, 1, 1, 1], //position 1: down, right, left
     [0, 1, 1, 1], //position 2: down, right, left
-    [0, 1, 1, 0], //position 3: down, left
+    [0, 1, 0, 1], //position 3: down, left
     [1, 1, 1, 0], //position 4: up, down, right
     [1, 1, 1, 1], //position 5: up, down, right, left
     [1, 1, 1, 1], //position 6: up, down, right, left
@@ -18,7 +18,7 @@ const movement = [
     [1, 1, 1, 1], //position 10: up, down, right, left
     [1, 1, 0, 1], //position 11: up, down, left
     [1, 0, 1, 0], //position 12: up, right
-    [1, 1, 0, 1], //position 13: up, right, left
+    [1, 0, 1, 1], //position 13: up, right, left
     [1, 0, 1, 1], //position 14: up, right, left
     [1, 0, 0, 1] //position 15: up, left
 ];
