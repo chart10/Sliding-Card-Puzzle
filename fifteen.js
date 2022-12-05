@@ -18,7 +18,7 @@ const movement = [
     [1, 1, 1, 1], //position 10: up, down, right, left
     [1, 1, 0, 1], //position 11: up, down, left
     [1, 0, 1, 0], //position 12: up, right
-    [1, 1, 0, 1], //position 13: up, right, left
+    [1, 0, 1, 1], //position 13: up, right, left
     [1, 0, 1, 1], //position 14: up, right, left
     [1, 0, 0, 1] //position 15: up, left
 ];
@@ -38,7 +38,7 @@ function findMoveablePieces(){
     var clear = document.querySelectorAll(".moveablepiece");
     for(var i = 0; i < clear.length; i++){ //removes moveablepiece from all tiles that have it
         var tile = clear[i];
-        tile.classList.remove(".moveablepiece");
+        tile.classList.remove("moveablepiece");
     }
 
     var emptyTile = tilePlacement[15];
