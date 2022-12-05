@@ -1,4 +1,4 @@
-// Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
+// Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
 
 // Tile Placement Array represents the location of each tile on the board
 // VERY IMPORTANT: The array INDEX is the tile!
@@ -124,6 +124,7 @@ function moveTile(){
                 console.log("left");
             }
         }
+        checkWin();
         findMoveablePieces();
     }
 }
@@ -196,4 +197,15 @@ function shufflePieces() {
         // move a random item from the list of moveablePieces
         moveTile.call(moveablePieces[randomValue])
     }
+}
+
+function checkWin(){
+
+    for(var i = 0; i < 16; i++){
+        if(tilePlacement[i] != i){ //if a tile is not in the correct position, return
+            return;
+        }
+    }
+    //if all tile placements correct, show win notif
+    setTimeout(() => {  alert("Win!"); }, 100); //placeholder win notif, timeout so tile location has time to update
 }
