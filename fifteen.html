@@ -10,7 +10,7 @@
     <title>Fifteen Puzzle</title>
   </head>
   <body>
-    <img src="fifteen.png" alt="Fifteen Puzzle" />
+    <img src="fifteen.png" id="background" alt="Fifteen Puzzle" />
     <p>
       The goal of the fifteen puzzle is to un-jumble its fifteen squares by
       repeatedly making moves that slide squares into the empty space. How
@@ -33,7 +33,7 @@
       <div class="tile" id="tile14">14</div>
       <div class="tile" id="tile15">15</div>
     </div>
-    <button>Shuffle</button>
+    <button id="shuffle">Shuffle</button>
     <p>
       American puzzle author and mathematician Sam Loyd is often falsely
       credited with creating the puzzle; indeed, Loyd claimed from 1891 until
@@ -43,6 +43,6 @@
 
     <!-- TODO: Add links to W3C specifications -->
 
-    <script src="script.js"></script>
+    <script src="fifteen.js" defer></script>
   </body>
 </html>
