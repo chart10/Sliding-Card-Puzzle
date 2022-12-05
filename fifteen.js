@@ -110,6 +110,7 @@ function moveTile(){
                 console.log("left");
             }
         }
+        checkWin();
         findMoveablePieces();
     }
 }
@@ -156,4 +157,15 @@ function moveLeft(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+}
+
+function checkWin(){
+
+    for(var i = 0; i < 16; i++){
+        if(tilePlacement[i] != i){ //if a tile is not in the correct position, return
+            return;
+        }
+    }
+    //if all tile placements correct, show win notif
+    setTimeout(() => {  alert("Win!"); }, 100); //placeholder win notif, timeout so tile location has time to update
 }
