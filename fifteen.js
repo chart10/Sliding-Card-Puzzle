@@ -169,3 +169,10 @@ function checkWin(){
     //if all tile placements correct, show win notif
     setTimeout(() => {  alert("Win!"); }, 100); //placeholder win notif, timeout so tile location has time to update
 }
+
+function changeBackground(imageurl){
+    var tiles = document.querySelectorAll(".tile");
+    tiles.forEach(tile => {
+        tile.style.backgroundImage = "url(" + imageurl + ")";
+    });
+}
