@@ -7,12 +7,12 @@
 
 body {
     text-align: center;
-    margin: 1rem 30rem 3rem 5rem;
+    margin: 3rem;
     font-family: mario64pixels;
-    background-image: url(static/winterMario.jpg);
+    /* background-image: url(static/winterMario.jpg);
     background-position: center;
     background-size: auto 100%;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 
 p {
