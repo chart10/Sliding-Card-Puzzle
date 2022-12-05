@@ -20,15 +20,16 @@ const movement = [
     [1, 0, 1, 0], //position 12: up, right
     [1, 0, 1, 1], //position 13: up, right, left
     [1, 0, 1, 1], //position 14: up, right, left
-    [1, 0, 0, 1] //position 15: up, left
+    [1, 0, 0, 1]  //position 15: up, left
 ];
 
 let tiles = document.querySelectorAll(".tile");
-console.log(tiles);
+//console.log(tiles);
 
-//TODO: shuffle here
+
+
 tiles.forEach(tile => {
-    console.log(tile.id);
+    //console.log(tile.id);
     tile.addEventListener("click", moveTile);
 });
 
@@ -38,7 +39,7 @@ function findMoveablePieces(){
     var clear = document.querySelectorAll(".moveablepiece");
     for(var i = 0; i < clear.length; i++){ //removes moveablepiece from all tiles that have it
         var tile = clear[i];
-        tile.classList.remove(".moveablepiece");
+        tile.classList.remove("moveablepiece");
     }
 
     var emptyTile = tilePlacement[15];
@@ -46,46 +47,46 @@ function findMoveablePieces(){
     var adjacentTileIndex;
     var adjacentTile;
 
-    if(movement[emptyTile][0] == 1){ //if has adjacent tile above
+    if(adjacent[0] == 1){ //if has adjacent tile above
         adjacentTileIndex = tilePlacement.indexOf(emptyTile - 4);
         adjacentTile = document.getElementById("tile" + (adjacentTileIndex+1));
         adjacentTile.classList.add("moveablepiece");
-        console.log(adjacentTile);
+        //console.log(adjacentTile);
     }
 
-    if(movement[emptyTile][1] == 1){ //if has adjacent tile below
+    if(adjacent[1] == 1){ //if has adjacent tile below
         adjacentTileIndex = tilePlacement.indexOf(emptyTile + 4);
         adjacentTile = document.getElementById("tile" + (adjacentTileIndex+1));
         adjacentTile.classList.add("moveablepiece");
-        console.log(adjacentTile);
+        //console.log(adjacentTile);
     }
 
-    if(movement[emptyTile][2] == 1){ //if has adjacent tile to the right
+    if(adjacent[2] == 1){ //if has adjacent tile to the right
         adjacentTileIndex = tilePlacement.indexOf(emptyTile + 1);
         adjacentTile = document.getElementById("tile" + (adjacentTileIndex+1));
         adjacentTile.classList.add("moveablepiece");
-        console.log(adjacentTile);
+        //console.log(adjacentTile);
     }
 
-    if(movement[emptyTile][3] == 1){ //if has adjacent tile to the left
+    if(adjacent[3] == 1){ //if has adjacent tile to the left
         adjacentTileIndex = tilePlacement.indexOf(emptyTile - 1);
         adjacentTile = document.getElementById("tile" + (adjacentTileIndex+1));
         adjacentTile.classList.add("moveablepiece");
-        console.log(adjacentTile);
+        //console.log(adjacentTile);
     }
 }
 
 function moveTile(){
-    console.log(this);
+    //console.log(this);
     if(this.classList.contains("moveablepiece")){ //if the clicked tile is a moveable piece, move it
         var tileID = this.id.substring(4); //gets tile ID number
         console.log(tileID);
         var ID = parseInt(tileID); //parses as integer
         var placement = tilePlacement[ID-1];
         var tilestyle = window.getComputedStyle(this);
-        console.log(placement);
+        //console.log(placement);
 
-        console.log(movement[placement]);
+        //console.log(movement[placement]);
         if(movement[placement][0] == 1){ //if empty tile is above, move up
             if(placement-4 == tilePlacement[15]){
                 moveUp(this, ID, tilestyle.getPropertyValue("top"));
@@ -111,6 +112,9 @@ function moveTile(){
             }
         }
         findMoveablePieces();
+        // let moveablePieces = []
+        // moveablePieces = document.querySelectorAll(".moveablepiece");
+        // console.log(moveablePieces)
     }
 }
 
@@ -156,4 +160,24 @@ function moveLeft(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+}
+
+//TODO: shuffle here
+const shuffleButton = document.querySelector('#shuffle')
+shuffleButton.addEventListener('click', shufflePieces)
+
+function shufflePieces() {
+    // move pieces randomly for a predetermined number of moves
+    const numberOfMoves = 1000
+    
+    
+    for (let i = 0; i <= numberOfMoves; i++) {
+        //Execute one of the possible moves based on a random value
+        // create an array of all moveable pieces
+        let moveablePieces = document.querySelectorAll(".moveablepiece");
+        console.log(moveablePieces)
+        const randomValue = Math.floor(Math.random() * moveablePieces.length)
+        // move a random item from the list of moveablePieces
+        moveTile.call(moveablePieces[randomValue])
+    }
 }
