@@ -129,7 +129,7 @@ function moveTile(){
     }
 }
 
-function moveTile(tile, id, direction, currentPosition){
+function move(tile, id, direction, currentPosition){
     var newPosition = parseInt(currentPosition);
     if(direction == "left" || direction == "up"){
         position = position - 100;
