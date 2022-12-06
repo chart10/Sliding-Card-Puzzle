@@ -4,6 +4,7 @@
 // VERY IMPORTANT: The array INDEX is the tile!
 // VERY IMPORTANT: The VALUE is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+let shuffled = false;
 
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
@@ -206,6 +207,7 @@ const shuffleButton = document.querySelector('#shuffle')
 shuffleButton.addEventListener('click', shufflePieces)
 
 function shufflePieces() {
+    shuffled = false;
     // move pieces randomly for a predetermined number of moves
     const numberOfMoves = 1000
     
@@ -214,14 +216,52 @@ function shufflePieces() {
         //Execute one of the possible moves based on a random value
         // create an array of all moveable pieces
         let moveablePieces = document.querySelectorAll(".moveablePiece");
-        console.log(moveablePieces)
-        const randomValue = Math.floor(Math.random() * moveablePieces.length)
+        console.log(moveablePieces);
+        const randomValue = Math.floor(Math.random() * moveablePieces.length);
         // move a random item from the list of moveablePieces
-        moveTile.call(moveablePieces[randomValue])
+        moveTile.call(moveablePieces[randomValue]);
+    }
+
+    shuffled = true;
+}
+
+function animateMove(tile, direction, currentPosition){
+    var newPosition = parseInt(currentPosition);
+    var sign;
+    if(direction == "left" || direction == "up"){
+        newPosition = position - 100;
+        sign = -1;
+    }
+    else{
+        newPosition = position + 100;
+        sign = 1;
+    }
+
+    var position = parseInt(currentPosition);
+    var counter = 1;
+    var animate = setInterval(animate, 5);
+
+    function animate(){
+        if(position == newPosition){
+            clearInterval(id);
+        }
+        else{
+            if(direction == "up" || direction == "down"){
+                tile.style.top = position + "px";
+                position = position + sign*counter;
+            }
+            else{
+                tile.style.left = position + "px";
+                position = position + sign*counter;s
+            }
+        }
     }
 }
 
 function checkWin(){
+    if(!shuffled){ //don't check for win during shuffling
+        return;
+    }
 
     for(var i = 0; i < 16; i++){
         if(tilePlacement[i] != i){ //if a tile is not in the correct position, return
