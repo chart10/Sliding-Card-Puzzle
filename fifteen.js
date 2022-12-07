@@ -4,6 +4,7 @@
 // VERY IMPORTANT: The array INDEX is the tile!
 // VERY IMPORTANT: The VALUE is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+let shuffling = true;
 
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
@@ -204,6 +205,7 @@ const shuffleButton = document.querySelector('#shuffle')
 shuffleButton.addEventListener('click', shufflePieces)
 
 function shufflePieces() {
+    shuffling = true;
     // move pieces randomly for a predetermined number of moves
     const numberOfMoves = 1000
     
@@ -220,9 +222,13 @@ function shufflePieces() {
     // Clear Moves Counter
     userMoves = 0
     document.getElementById('moves').innerHTML = 'Moves: ' + userMoves
+    shuffling = false;
 }
 
 function checkWin(){
+    if(shuffling){
+        return;
+    }
 
     for(var i = 0; i < 16; i++){
         if(tilePlacement[i] != i){ //if a tile is not in the correct position, return
