@@ -181,10 +181,14 @@ function moveDown(tile, id, currentPosition){
 function moveRight(tile, id, currentPosition){
     // Change CSS styling for selected Tile
     var position = parseInt(currentPosition);
+    console.log(currentPosition);
+
+    animateMove(tile, "right", position);
+    // Update tilePlacement Array
+
     position = position + 100;
     tile.style.left = position + "px"; 
 
-    // Update tilePlacement Array
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
@@ -226,33 +230,33 @@ function shufflePieces() {
 }
 
 function animateMove(tile, direction, currentPosition){
-    var newPosition = parseInt(currentPosition);
+    var newPosition = currentPosition;
     var sign;
     if(direction == "left" || direction == "up"){
-        newPosition = position - 100;
+        newPosition = newPosition - 100;
         sign = -1;
     }
     else{
-        newPosition = position + 100;
+        newPosition = newPosition + 100;
         sign = 1;
     }
 
     var position = parseInt(currentPosition);
-    var counter = 1;
-    var animate = setInterval(animate, 5);
+    var animate = setInterval(animate, 1);
 
     function animate(){
         if(position == newPosition){
-            clearInterval(id);
+            clearInterval(animate);
         }
         else{
             if(direction == "up" || direction == "down"){
                 tile.style.top = position + "px";
-                position = position + sign*counter;
+                position = position + sign;
             }
             else{
                 tile.style.left = position + "px";
-                position = position + sign*counter;s
+                position = position + sign;
+                console.log(position + " " + newPosition);
             }
         }
     }
