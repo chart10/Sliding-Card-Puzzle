@@ -26,6 +26,10 @@ const movement = [
     [1, 0, 0, 1]  //position 15: up, left
 ];
 
+// Variable for counting the user's moves for this game
+let userMoves = 0;
+document.getElementById('moves').innerHTML = 'Moves: ' + userMoves
+
 // Add Event Listeners to each Tile on the board
 let tiles = document.querySelectorAll(".tile");
 //console.log(tiles);
@@ -141,6 +145,10 @@ function moveUp(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+    
+    // Iterate Moves Counter
+    userMoves++;
+    document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
 
 function moveDown(tile, id, currentPosition){
@@ -153,6 +161,10 @@ function moveDown(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+
+    // Iterate Moves Counter
+    userMoves++;
+    document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
 
 function moveRight(tile, id, currentPosition){
@@ -165,6 +177,10 @@ function moveRight(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+    
+    // Iterate Moves Counter
+    userMoves++;
+    document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
 
 function moveLeft(tile, id, currentPosition){
@@ -177,6 +193,10 @@ function moveLeft(tile, id, currentPosition){
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
     tilePlacement[15] = swap;
+    
+    // Iterate Moves Counter
+    userMoves++;
+    document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
 
 //TODO: shuffle here
@@ -197,6 +217,9 @@ function shufflePieces() {
         // move a random item from the list of moveablePieces
         moveTile.call(moveablePieces[randomValue])
     }
+    // Clear Moves Counter
+    userMoves = 0
+    document.getElementById('moves').innerHTML = 'Moves: ' + userMoves
 }
 
 function checkWin(){

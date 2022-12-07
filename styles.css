@@ -1,8 +1,25 @@
 /* Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
 
+@font-face {
+    font-family: mario64pixels;
+    src: url(static/Mario64.woff) format(woff);
+}
+
 body {
     text-align: center;
     margin: 3rem;
+    font-family: mario64pixels;
+    /* background-image: url(static/winterMario.jpg);
+    background-position: center;
+    background-size: auto 100%;
+    background-attachment: fixed; */
+}
+
+p {
+    background-color: rgba(0, 0, 0, 50%);
+    font-size: 20px;
+    color: white;
+    padding: 1rem;
 }
 
 #wrapper {
@@ -19,7 +36,7 @@ body {
     height: 96px;
     width: 96px;
     font-size: 32px;
-    background-image: url(fireballmario.jpg);
+    background-image: url(static/fireballmario.jpg);
     font-family: sans-serif;
     border: solid 2px black;
     position: absolute;
@@ -119,4 +136,9 @@ body {
     color: #006600;
     text-decoration-line: underline;
     cursor: pointer;
+}
+
+.w3c {
+    width: 100px;
+    float: right;
 }
