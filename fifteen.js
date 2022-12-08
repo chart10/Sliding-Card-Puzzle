@@ -4,7 +4,7 @@
 // VERY IMPORTANT: The array INDEX is the tile!
 // VERY IMPORTANT: The VALUE is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-let shuffling = true;
+let shuffling = false;
 
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
@@ -39,6 +39,36 @@ tiles.forEach(tile => {
     tile.addEventListener("click", moveTile);
 });
 
+//The background image of the main div and each of the block divs is replaced
+
+function changeBackGround(){
+    var class_name= document.getElementById("characters").value
+    var tiles = document.querySelectorAll(".tile");
+    tiles.forEach(tile => {
+        tile.style.backgroundImage = "url('static/" + class_name + ".jpg')";
+    });
+}
+
+/*
+() {
+    var class_name = document.getElementById("characters").value;
+    for (var i = 1; i < tilePlacement.length; i++) {
+        if (tilePlacement[i] == "") {
+            document.getElementById("wrapper").innerHTML += "";
+        } else {
+            var id_name = tilePlacement[i];
+            document.getElementById("wrapper").innerHTML += '<div class="tile '+ class_name +'" id="tile' + tilePlacement[i] + '">' +tilePlacement[i]+ '</div>';
+        }
+    }
+}
+function changeBackGround(){
+    var className=document.getElementById("characters").value;
+    
+    tiles.forEach(title =>{ 
+        tile.style.backgroundImage="url('"+className+"')"
+    });
+}
+*/
 // Determine which Tiles can be moved upon loading the page
 findMoveablePieces();
 
@@ -88,7 +118,7 @@ function findMoveablePieces(){
 
 function moveTile(){
     //console.log(this);
-    
+
     // Determine whether the selected Tile can be moved
     // First check if Tile has the .moveablePiece class
     if(this.classList.contains("moveablePiece")){ 
@@ -133,15 +163,18 @@ function moveTile(){
         findMoveablePieces();
     }
 }
-
-
 // TODO: Lots of duplicate lines. Try to combine these 4 functions into 1
 function moveUp(tile, id, currentPosition){
     // Change CSS styling for selected Tile
     var position = parseInt(currentPosition);
-    position = position - 100;
-    tile.style.top = position + "px";
-
+    if(shuffling==false){
+        //console.log(currentPosition);//these help test postioning 
+        animateMove(tile, "up", position);
+    }else{
+        position = position - 100;
+        tile.style.top = position + "px";
+        //console.log(currentPosition); //these help test postioning 
+    }
     // Update tilePlacement Array
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
@@ -155,9 +188,14 @@ function moveUp(tile, id, currentPosition){
 function moveDown(tile, id, currentPosition){
     // Change CSS styling for selected Tile
     var position = parseInt(currentPosition);
-    position = position + 100;
-    tile.style.top = position + "px";
-
+    if(shuffling==false){
+        //console.log(currentPosition);//these help test postioning 
+        animateMove(tile, "down", position);
+    }else{
+        position = position + 100;
+        tile.style.top = position + "px";
+        //console.log(currentPosition);//these help test postioning 
+    }
     // Update tilePlacement Array
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
@@ -171,9 +209,14 @@ function moveDown(tile, id, currentPosition){
 function moveRight(tile, id, currentPosition){
     // Change CSS styling for selected Tile
     var position = parseInt(currentPosition);
-    position = position + 100;
-    tile.style.left = position + "px"; 
-
+    if(shuffling==false){
+        //console.log(currentPosition);//these help test postioning 
+        animateMove(tile, "right", position);
+    }else{
+        position = position + 100;
+        tile.style.left = position + "px";
+        //console.log(currentPosition);//these help test postioning 
+    }
     // Update tilePlacement Array
     var swap = tilePlacement[id-1]; 
     tilePlacement[id-1] = tilePlacement[15];
@@ -187,8 +230,14 @@ function moveRight(tile, id, currentPosition){
 function moveLeft(tile, id, currentPosition){
     // Change CSS styling for selected Tile
     var position = parseInt(currentPosition);
-    position = position - 100;
-    tile.style.left = position + "px";
+    if(shuffling==false){
+        //console.log(currentPosition);//these help test postioning 
+        animateMove(tile, "left", position);
+    }else{
+        position = position - 100;
+        tile.style.left = position + "px";
+        //console.log(currentPosition);//these help test postioning 
+    }
 
     // Update tilePlacement Array
     var swap = tilePlacement[id-1]; 
@@ -199,7 +248,41 @@ function moveLeft(tile, id, currentPosition){
     userMoves++;
     document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
+function animateMove(tile, direction, currentPosition){
+    var newPosition = currentPosition;
+    var sign;
+    if(direction == "left" || direction == "up"){
+        newPosition = newPosition - 100;
+        sign = -1;
+    }
+    else{
+        newPosition = newPosition + 100;
+        sign = 1;
+    }
 
+    var position = parseInt(currentPosition);
+    var animate = setInterval(animate, 1);
+
+    function animate(){
+        if(position == newPosition){
+            clearInterval(animate);
+        }
+        else{
+            if(direction == "up" || direction == "down"){
+                
+                position = position + sign;
+                tile.style.top = position + "px";
+            }
+            else{
+                
+                position = position + sign;
+                tile.style.left = position + "px";
+                //console.log(position + " " + newPosition);
+            }
+        }
+    }
+}
+function animateShuffling(){}
 //TODO: shuffle here
 const shuffleButton = document.querySelector('#shuffle')
 shuffleButton.addEventListener('click', shufflePieces)
@@ -207,7 +290,7 @@ shuffleButton.addEventListener('click', shufflePieces)
 function shufflePieces() {
     shuffling = true;
     // move pieces randomly for a predetermined number of moves
-    const numberOfMoves = 1000
+    const numberOfMoves = 500
     
     
     for (let i = 0; i <= numberOfMoves; i++) {
