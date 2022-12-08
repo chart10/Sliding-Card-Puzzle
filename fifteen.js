@@ -4,7 +4,7 @@
 // VERY IMPORTANT: The array INDEX is the tile!
 // VERY IMPORTANT: The VALUE is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-let shuffling = true;
+let shuffling = false;
 
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
