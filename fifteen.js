@@ -39,6 +39,36 @@ tiles.forEach(tile => {
     tile.addEventListener("click", moveTile);
 });
 
+//The background image of the main div and each of the block divs is replaced
+
+function changeBackGround(){
+    var class_name= document.getElementById("characters").value
+    var tiles = document.querySelectorAll(".tile");
+    tiles.forEach(tile => {
+        tile.style.backgroundImage = "url('static/" + class_name + ".jpg')";
+    });
+}
+
+/*
+() {
+    var class_name = document.getElementById("characters").value;
+    for (var i = 1; i < tilePlacement.length; i++) {
+        if (tilePlacement[i] == "") {
+            document.getElementById("wrapper").innerHTML += "";
+        } else {
+            var id_name = tilePlacement[i];
+            document.getElementById("wrapper").innerHTML += '<div class="tile '+ class_name +'" id="tile' + tilePlacement[i] + '">' +tilePlacement[i]+ '</div>';
+        }
+    }
+}
+function changeBackGround(){
+    var className=document.getElementById("characters").value;
+    
+    tiles.forEach(title =>{ 
+        tile.style.backgroundImage="url('"+className+"')"
+    });
+}
+*/
 // Determine which Tiles can be moved upon loading the page
 findMoveablePieces();
 
@@ -88,7 +118,7 @@ function findMoveablePieces(){
 
 function moveTile(){
     //console.log(this);
-    
+
     // Determine whether the selected Tile can be moved
     // First check if Tile has the .moveablePiece class
     if(this.classList.contains("moveablePiece")){ 
@@ -133,8 +163,6 @@ function moveTile(){
         findMoveablePieces();
     }
 }
-
-
 // TODO: Lots of duplicate lines. Try to combine these 4 functions into 1
 function moveUp(tile, id, currentPosition){
     // Change CSS styling for selected Tile
@@ -254,6 +282,7 @@ function animateMove(tile, direction, currentPosition){
         }
     }
 }
+function animateShuffling(){}
 //TODO: shuffle here
 const shuffleButton = document.querySelector('#shuffle')
 shuffleButton.addEventListener('click', shufflePieces)
@@ -261,7 +290,7 @@ shuffleButton.addEventListener('click', shufflePieces)
 function shufflePieces() {
     shuffling = true;
     // move pieces randomly for a predetermined number of moves
-    const numberOfMoves = 1000
+    const numberOfMoves = 500
     
     
     for (let i = 0; i <= numberOfMoves; i++) {
