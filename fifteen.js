@@ -6,6 +6,7 @@
 // VERY IMPORTANT: The VALUE is the location on the board
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let shuffling = false;
+let moving = false;
 
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
@@ -123,6 +124,12 @@ function moveTile(){
     // Determine whether the selected Tile can be moved
     // First check if Tile has the .moveablePiece class
     if(this.classList.contains("moveablePiece")){ 
+        if(moving == true && shuffling == false){ 
+        //if Tile still animating, do not move new tile
+            return;
+        }
+        moving = true;
+
         var tileID = this.id.substring(4); //gets tile ID number
         console.log(tileID);
         var ID = parseInt(tileID); //parses as integer
@@ -266,6 +273,7 @@ function animateMove(tile, direction, currentPosition){
 
     function animate(){
         if(position == newPosition){
+            moving = false;
             clearInterval(animate);
         }
         else{
@@ -283,6 +291,7 @@ function animateMove(tile, direction, currentPosition){
         }
     }
 }
+
 function animateShuffling(){}
 //TODO: shuffle here
 const shuffleButton = document.querySelector('#shuffle')
