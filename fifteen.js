@@ -128,7 +128,9 @@ function moveTile(){
         //if Tile still animating, do not move new tile
             return;
         }
-        moving = true;
+        if(shuffling == false){
+            moving = true;
+        }
 
         var tileID = this.id.substring(4); //gets tile ID number
         console.log(tileID);
@@ -293,7 +295,7 @@ function animateMove(tile, direction, currentPosition){
 }
 
 function animateShuffling(){}
-//TODO: shuffle here
+
 const shuffleButton = document.querySelector('#shuffle')
 shuffleButton.addEventListener('click', shufflePieces)
 
