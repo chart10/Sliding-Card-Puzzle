@@ -257,6 +257,7 @@ function moveLeft(tile, id, currentPosition){
 }
 function animateMove(tile, direction, currentPosition){
     moving = true;
+    shuffleButton.disabled = true;
     var newPosition = currentPosition;
     var sign;
     if(direction == "left" || direction == "up"){
@@ -274,6 +275,7 @@ function animateMove(tile, direction, currentPosition){
     function animate(){
         if(position == newPosition){
             moving = false;
+            shuffleButton.disabled = false;
             clearInterval(animate);
         }
         else{
