@@ -320,5 +320,5 @@ function checkWin(){
         }
     }
     //if all tile placements correct, show win notif
-    setTimeout(() => {  document.getElementById("wining").src = "./win.png"; }, 100); //placeholder win notif, timeout so tile location has time to update
+    setTimeout(() => {  document.getElementById("winning").src = "./win.png"; }, 100); //placeholder win notif, timeout so tile location has time to update
 }
