@@ -143,3 +143,10 @@ p {
     width: 100px;
     float: right;
 }
+
+#wining {
+	width: 1300px;
+    float: center;
+	transform: rotate(360deg);
+	
+}
