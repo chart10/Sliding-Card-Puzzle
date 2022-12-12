@@ -128,9 +128,6 @@ function moveTile(){
         //if Tile still animating, do not move new tile
             return;
         }
-        if(shuffling == false){
-            moving = true;
-        }
 
         var tileID = this.id.substring(4); //gets tile ID number
         console.log(tileID);
@@ -259,6 +256,7 @@ function moveLeft(tile, id, currentPosition){
     document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 }
 function animateMove(tile, direction, currentPosition){
+    moving = true;
     var newPosition = currentPosition;
     var sign;
     if(direction == "left" || direction == "up"){
