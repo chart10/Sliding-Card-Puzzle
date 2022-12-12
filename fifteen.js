@@ -337,7 +337,6 @@ function checkWin(){
 function closeMe(){
 
    		x=document.getElementById("winning");
-
    		x.style.display="none";
 
 	}
