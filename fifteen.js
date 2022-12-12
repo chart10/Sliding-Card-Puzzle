@@ -8,6 +8,8 @@ let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let shuffling = false;
 let moving = false;
 
+
+
 // Movement Array represents legal moves for each tile location
 // [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
 const movement = [
@@ -41,37 +43,28 @@ tiles.forEach(tile => {
     tile.addEventListener("click", moveTile);
 });
 
-//The background image of the main div and each of the block divs is replaced
-
+// The background image of the main div and each of the block divs is replaced
+// with the user selected option
 function changeBackGround(){
-    var class_name= document.getElementById("characters").value
+    var class_name = document.getElementById("characters").value
     var tiles = document.querySelectorAll(".tile");
     tiles.forEach(tile => {
         tile.style.backgroundImage = "url('static/" + class_name + ".jpg')";
     });
 }
 
-/*
-() {
-    var class_name = document.getElementById("characters").value;
-    for (var i = 1; i < tilePlacement.length; i++) {
-        if (tilePlacement[i] == "") {
-            document.getElementById("wrapper").innerHTML += "";
-        } else {
-            var id_name = tilePlacement[i];
-            document.getElementById("wrapper").innerHTML += '<div class="tile '+ class_name +'" id="tile' + tilePlacement[i] + '">' +tilePlacement[i]+ '</div>';
-        }
-    }
-}
-function changeBackGround(){
-    var className=document.getElementById("characters").value;
-    
-    tiles.forEach(title =>{ 
-        tile.style.backgroundImage="url('"+className+"')"
+// On page load, a random background image for the tiles is chosen
+function randBackGround() {
+    let backgroundImage = ['fireballmario','tanookiMario','toad','waluigi'];
+    num = Math.floor(Math.random() * 4)
+    var class_name = backgroundImage[num]
+    var tiles = document.querySelectorAll(".tile");
+    tiles.forEach(tile => {
+        tile.style.backgroundImage = "url('static/" + class_name + ".jpg')";
     });
 }
-*/
-// Determine which Tiles can be moved upon loading the page
+randBackGround();
+
 findMoveablePieces();
 
 function findMoveablePieces(){
