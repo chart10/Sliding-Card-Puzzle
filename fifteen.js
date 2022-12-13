@@ -15,11 +15,11 @@ let moving = false;
 let userMoves = 0;
 
 /**
- * A function that returns the legal moves for a given tile location
+ * A function that returns the legal move directions for a tile location passed to it.
  * Retrieved from an array that stores which directions each tile can move in
  * [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
  */
-function movement(location){
+function movement(position){
     //Movement Array represents legal moves for each tile location
     //[ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
     const movement = [
@@ -41,7 +41,7 @@ function movement(location){
         [1, 0, 0, 1]  //position 15: up, left
     ];
 
-    return movement[location];
+    return movement[position];
 }
 
 document.getElementById('moves').innerHTML = 'Moves: ' + 0;
@@ -189,7 +189,7 @@ function moveTile(){
             }
         }
 
-        //update move counter
+        //update moves trackes
         userMoves++;
         document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 
