@@ -6,10 +6,12 @@
  * @global tilePlacement - represents the location of each tile
  * @global {boolean} shuffling - tracks whether tiles are being shuffled
  * @global {boolean} moving - tracks whether some tile's movement is currently being animated
+ * @global userMoves - tracks number of moves made by user
 */
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let shuffling = false;
 let moving = false;
+let userMoves = 0;
 
 /**
  * A function that returns the legal moves for a given tile location
@@ -40,11 +42,6 @@ function movement(location){
     return movement[location];
 }
 
-/**
- * Variable for tracking the number of moves the user has made
- * @global userMoves - number of moves made by user
- */
-let userMoves = 0;
 document.getElementById('moves').innerHTML = 'Moves: ' + 0;
 
 addListeners();
