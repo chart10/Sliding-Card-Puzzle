@@ -1,5 +1,6 @@
 /** Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
 
+"use strict";
 /** Tile Placement Array represents the location of each tile on the board
  * VERY IMPORTANT: The array INDEX is the tile!
  * VERY IMPORTANT: The VALUE is the location on the board 
@@ -81,7 +82,7 @@ function changeBackGround(){
  */
 function randBackGround() {
     let backgroundImage = ['fireballmario','tanookiMario','toad','waluigi'];
-    num = Math.floor(Math.random() * 4);
+    var num = Math.floor(Math.random() * 4);
     var class_name = backgroundImage[num];
     var tiles = document.querySelectorAll(".tile");
     tiles.forEach(tile => {
