@@ -1,10 +1,18 @@
-/* Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
+/* Project 2:  Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
+/* In this assignment, we created the Fifteen Puzzle using HTML, JavaScript, and CSS.
+    Extra features implemented:
+    1. End-of-game notification (upon reacing win state, text notifying of win appears)
+    2. Extra animation (end of game notification scrolls from left to right)
+    3. Animations and/or transitions (tiles are animated to slide to new position)
+    4. Multiple backgrounds (4 backgrounds, initial one randomized) 
+*/
 
 /* @font-face {
     font-family: mario64pixels;
     src: url(static/Mario64.woff) format(woff);
 } */
 
+/* Styling for the body */
 body {
     text-align: center;
     margin: 3rem;
@@ -12,6 +20,7 @@ body {
     /* font-family: mario64pixels; */
 }
 
+/* Styling for elements with the p tag */
 p {
     /* background-color: rgba(0, 0, 0, 50%); */
     font-size: 20px;
@@ -19,6 +28,7 @@ p {
     padding: 1rem;
 }
 
+/* Styling for the wrapper around the tiles */
 #wrapper {
     height: 432px;
     width: 432px;
@@ -29,6 +39,7 @@ p {
     flex-wrap: wrap; */
 }
 
+/* Styling that applies to all tiles */
 .tile {
     height: 96px;
     width: 96px;
@@ -44,6 +55,8 @@ p {
     position: absolute;
 }
 
+/* #tile1 through #tile15 contain styling for the initial position of the tiles
+    as well as for the position of the background image displayed in the tiles */
 #tile1 {
     position: absolute;
     background-position: 0px 0px;
@@ -133,6 +146,7 @@ p {
     left: 200px;
 }
 
+/* Styling for when a tile than can move has a mouse cursor hover over it */
 .tile.moveablePiece:hover{
     border-color: red;
     color: #006600;
@@ -140,11 +154,13 @@ p {
     cursor: pointer;
 }
 
+/* Styling for the w3c validation */
 .w3c {
     width: 100px;
     float: right;
 }
 
+/* Styling for the win notification */
 #winning {
 	width: 1300px;
         float: center;
@@ -155,24 +171,30 @@ p {
 	
 }
 
+/* For the win notification animation */
 @keyframes MarqueeLeft 
 {
   0% { right: -100% }
   100% { right: 100% }
 }
 
+/* Classes for changing the background image of the tiles:  */
+/* Class that applies fireballmario.jpg as the image contained in the tiles */
 .fireballMario{
     background-image: url("static/fireballmario.jpg");
 }
 
+/* Class that applies tanookiMario.jpg as the image contained in the tiles */
 .tanookiMario{
     background-image: url("static/tanookiMario.jpg");
 }
 
+/* Class that applies toad.jpg as the image contained in the tiles */
 .toad{
     background-image: url("static/toad.jpg");
 }
 
+/* Class that applies waluigi.jpg as the image contained in the tiles */
 .waluigi{
     background-image: url("static/waluigi.jpg");
 }
