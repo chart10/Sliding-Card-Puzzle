@@ -159,3 +159,19 @@ p {
   0% { right: -100% }
   100% { right: 100% }
 }
+
+.fireballMario{
+    background-image: url("static/fireballmario.jpg");
+}
+
+.tanookiMario{
+    background-image: url("static/tanookiMario.jpg");
+}
+
+.toad{
+    background-image: url("static/toad.jpg");
+}
+
+.waluigi{
+    background-image: url("static/waluigi.jpg");
+}
