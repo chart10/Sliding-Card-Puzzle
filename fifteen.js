@@ -1,6 +1,15 @@
-/** Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
+/** 
+ * Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu
+ * In this assignment, we created the Fifteen Puzzle using HTML, JavaScript, and CSS.
+    Extra features implemented:
+    1. End-of-game notification (upon reacing win state, text notifying of win appears)
+    2. Extra animation (end of game notification scrolls from left to right)
+    3. Animations and/or transitions (tiles are animated to slide to new position)
+    4. Multiple backgrounds (4 backgrounds, initial one randomized)  
+ */
 
 "use strict";
+
 /** Tile Placement Array represents the location of each tile on the board
  * VERY IMPORTANT: The array INDEX is the tile!
  * VERY IMPORTANT: The VALUE is the location on the board 
@@ -8,7 +17,7 @@
  * @global {boolean} shuffling - tracks whether tiles are being shuffled
  * @global {boolean} moving - tracks whether some tile's movement is currently being animated
  * @global userMoves - tracks number of moves made by user
-*/
+ */
 let tilePlacement = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let shuffling = false;
 let moving = false;
@@ -18,6 +27,7 @@ let userMoves = 0;
  * A function that returns the legal move directions for a tile location passed to it.
  * Retrieved from an array that stores which directions each tile can move in
  * [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
+ * @param position - the position (from 0 to 15) of the tile whose legal moves are returned
  */
 function movement(position){
     //Movement Array represents legal moves for each tile location
@@ -92,7 +102,6 @@ function randBackGround() {
 }
 
 randBackGround();
-
 findMoveablePieces();
 
 /**
