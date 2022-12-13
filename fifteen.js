@@ -15,7 +15,7 @@ let moving = false;
 let userMoves = 0;
 
 /**
- * A function that returns the legal moves for a given tile location
+ * A function that returns the legal move directions for a given tile location.
  * Retrieved from an array that stores which directions each tile can move in
  * [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
  */
