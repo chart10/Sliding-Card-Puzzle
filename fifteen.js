@@ -1,5 +1,6 @@
 /** Project 2: Aryan Asalkhou, Alex Diaz, Christian Hart, Jamie Kouttu */
 
+"use strict";
 /** Tile Placement Array represents the location of each tile on the board
  * VERY IMPORTANT: The array INDEX is the tile!
  * VERY IMPORTANT: The VALUE is the location on the board 
@@ -15,6 +16,7 @@ let userMoves = 0;
 
 /**
  * A function that returns the legal moves for a given tile location
+ * Retrieved from an array that stores which directions each tile can move in
  * [ UP, DOWN, RIGHT, LEFT ], 0 = Cannot Move, 1 = Can move
  */
 function movement(location){
@@ -81,7 +83,7 @@ function changeBackGround(){
  */
 function randBackGround() {
     let backgroundImage = ['fireballmario','tanookiMario','toad','waluigi'];
-    num = Math.floor(Math.random() * 4);
+    var num = Math.floor(Math.random() * 4);
     var class_name = backgroundImage[num];
     var tiles = document.querySelectorAll(".tile");
     tiles.forEach(tile => {
@@ -94,7 +96,10 @@ randBackGround();
 findMoveablePieces();
 
 /**
- * This function discovers which tiles can move into an adjacent empty tile and adds the correcponding class to them
+ * This function discovers which tiles can move into an adjacent empty tile
+ * and adds the moveablePiece class to them.
+ * Uses the movement array data for the location of the empty tile
+ * to find which tiles are adjacent to it, adds the class to them.
  */
 function findMoveablePieces(){
     // Determine which Tiles can be moved
@@ -138,6 +143,9 @@ function findMoveablePieces(){
 
 /**
  * This function discovers where the tile should function and then calls the move function
+ * Gets the movement array data for the clicked tile to find which tiles are adjacent to it.
+ * Using that, finds which direction from the clicked tile the empty tile is.
+ * Calls move() to move the tile.
  */
 function moveTile(){
 
@@ -180,13 +188,24 @@ function moveTile(){
                 move(this, ID, "left", tilestyle.getPropertyValue("left"));
             }
         }
+
+        //update move counter
+        userMoves++;
+        document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
+
         checkWin();
         findMoveablePieces();
     }
 }
 
 /**
- * This function moves a tile in the correct direction
+ * This function moves a tile in the correct direction.
+ * This code is reused both when animating and when the shuffle function moves tiles.
+ * Use global variable shuffling to make the tiles not animate when shuffling (so shuffling doesn't take too long).
+ * Calculate the new position on either the x or y axis for the tile based on the direction it's moving in.
+ * If user moving tile, calls the animate tile function.
+ * If the shuffle function is moving the tile, updates the position of the tile with no animation.
+ * After the animation or position update, updates the tilePlacement array to match the new locations.
  * @param tile - the HTML object of the tile moved
  * @param id - the id number of the tile (the number in its ID name)
  * @param direction - the direction the tile is moving
@@ -221,7 +240,7 @@ function move(tile, id, direction, currentPosition){
 }
 
 /**
- * This function animates the movement of the tile
+ * This function calls animate() using setInterval to animate the movement of the tile
  * @param tile - the HTML object of the tile moved
  * @param id - the id number of the tile (the number in its ID name)
  * @param direction - the direction the tile is moving
@@ -232,35 +251,35 @@ function animateMove(tile, direction, currentPosition, newPosition){
     moving = true;
 
     var shuffleButton = document.querySelector('#shuffle');
-    shuffleButton.disabled = true;
+    shuffleButton.disabled = true; //disabled so shuffling during animation doesn't break board
 
-    var sign; //stores whether the position of the tile needs to be added to or subtracted from to get to the target position
+    var move; //stores the value by which the position of the tile is incremented/decremented with each iteration of the animate functon
     if(direction == "left" || direction == "up"){
-        sign = -1;
+        move = -1;
     }
     else{
-        sign = 1;
+        move = 1;
     }
 
     var position = currentPosition;
     var animate = setInterval(animate, 1);
 
     /**
-     * This function actually modifies the style of the tile to animate its movement
+     * This function moves the position of the tile by the amount stored in variable move each time it is run by setInterval
      */
     function animate(){
         if(position == newPosition){
-            moving = false;
-            shuffleButton.disabled = false;
+            moving = false; //tile no longer animating
+            shuffleButton.disabled = false; //re-enable shuffle button
             clearInterval(animate);
         }
         else{
             if(direction == "up" || direction == "down"){
-                position = position + sign;
+                position = position + move;
                 tile.style.top = position + "px";
             }
             else{
-                position = position + sign;
+                position = position + move;
                 tile.style.left = position + "px";
             }
         }
@@ -310,9 +329,9 @@ function checkWin(){
 /**
  * This function removes the win notification
  */
-function closeMe(){
+function closeWin(){
 
-   		x=document.getElementById("winning");
+   		var x=document.getElementById("winning");
    		x.src = "";
 
 	}
@@ -332,12 +351,12 @@ function reset(){ //resets the game board
         tile.style.top = "";
     });
 
-    //update moves counter
+    //reset moves counter
     userMoves = 0;
     document.getElementById('moves').innerHTML = 'Moves: ' + userMoves;
 
     //close win notif
-    closeMe();
+    closeWin();
 
     //find moveable tiles
     findMoveablePieces();
